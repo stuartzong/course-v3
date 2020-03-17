@@ -32,7 +32,8 @@ class TrainEvalCallback(Callback):
         self.run.n_iter   += 1
 
     def begin_epoch(self):
-        self.run.n_epochs=self.epoch
+        #############change epoch to epochs for the following line
+        self.run.n_epochs=self.epochs
         self.model.train()
         self.run.in_train=True
 

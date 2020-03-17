@@ -6,7 +6,7 @@
 
 from exp.nb_10b import *
 
-import apex.fp16_utils as fp16
+# import apex.fp16_utils as fp16
 
 def get_master(opt, flat_master=False):
     model_pgs = [[param for param in pg if param.requires_grad] for pg in opt.param_groups]

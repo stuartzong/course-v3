@@ -15,6 +15,7 @@ def annealer(f):
     def _inner(start, end): return partial(f, start, end)
     return _inner
 
+
 @annealer
 def sched_lin(start, end, pos): return start + pos*(end-start)
 
@@ -35,6 +36,7 @@ def combine_scheds(pcts, scheds):
     pcts = torch.cumsum(pcts, 0)
     def _inner(pos):
         idx = (pos >= pcts).nonzero().max()
+        print('xxxxx', pos, pcts)
         actual_pos = (pos-pcts[idx]) / (pcts[idx+1]-pcts[idx])
         return scheds[idx](actual_pos)
     return _inner
